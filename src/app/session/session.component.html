@@ -1,0 +1,36 @@
+<div class="session" *ngIf="(currentSession$ | async) as currentSession">
+  <div *ngIf="currentSession.started; else notStarted">
+    <div *ngIf="(currentQuestion$ | async) as currentQuestion" class="question">
+      <div *ngIf="lastQuestionAnswered !== currentQuestion.id; else waitingNextQuestion ">
+        <span class="question-value">      {{currentQuestion.value}}</span>
+        <div class="answers">
+            <div class="answer" *ngFor="let answer of currentQuestion.answers">
+              <button
+                (click)="saveAnswer(currentQuestion.id, answer.id)"
+                mat-raised-button
+                color="primary">
+                {{answer.value}} <mat-icon *ngIf="currentAnswerSelected === answer.id">check_circle</mat-icon>
+              </button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<ng-template #waitingNextQuestion>
+  <div
+  >
+    Awaiting the next question
+  </div>
+
+</ng-template>
+
+<ng-template #notStarted>
+  <div
+  >
+    The quiz has not yet started, please wait for the administrator to start it.
+  </div>
+
+</ng-template>
