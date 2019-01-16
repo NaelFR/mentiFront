@@ -1,0 +1,30 @@
+<div class="session" *ngIf="(currentSession$ | async) as currentSession">
+  <div *ngIf="currentSession.started; else notStarted">
+    <div *ngIf="(currentQuestion$ | async) as currentQuestion" class="question">
+      <div *ngIf="lastQuestionAnswered !== currentQuestion.id; else waitingNextQuestion ">
+        <span class="question-value">      {{currentQuestion.value}}</span>
+        <button color="primary" mat-raised-button (click)="finishQuestion(currentQuestion.id)">Next Question</button>
+      </div>
+    </div>
+    <app-users-responses-graph [sessionId]="currentSession.id"></app-users-responses-graph>
+  </div>
+</div>
+
+<ng-template #waitingNextQuestion>
+  <div
+  >
+    Awaiting the next question
+  </div>
+
+</ng-template>
+
+<ng-template #notStarted>
+  <div
+  >
+    <div *ngIf="(currentSession$ | async) as currentSession">
+      <button color="primary" mat-raised-button (click)="startSession(currentSession.id)">Start Quiz</button>
+    </div>
+  </div>
+
+</ng-template>
+
