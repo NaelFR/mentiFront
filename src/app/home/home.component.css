@@ -1,0 +1,33 @@
+.session-choice {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sessions {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+.session {
+  flex: 1;
+  max-width: 300px;
+  cursor: pointer;
+}
+.session mat-card:hover{
+  background: #F2F2F2;
+}
+
+mat-card {
+  margin: 0 10px;
+}
+mat-card:last-of-type {
+  margin-right: 0;
+}
+
+mat-card:first-of-type {
+  margin-left: 0;
+}

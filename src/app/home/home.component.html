@@ -1,0 +1,8 @@
+<div class="session-choice">
+  <div class="title"><h1>Welcome to Menti-nael</h1></div>
+  <div class="sessions">
+    <div *ngFor="let session of sessions | async" class="session">
+      <mat-card routerLink="/session/{{session.id}}">{{session.name}}</mat-card>
+    </div>
+  </div>
+</div>
