@@ -1,6 +1,9 @@
-export interface Session {
+import {Answer} from './answer';
+
+export interface Question {
   id: number;
-  name: String;
-  isFinished: boolean;
-  isStarted: boolean;
+  value: string;
+  type: string;
+  finished: boolean;
+  answers: Answer[];
 }

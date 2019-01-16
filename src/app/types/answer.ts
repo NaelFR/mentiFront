@@ -1,6 +1,4 @@
-export interface Question {
+export interface Answer {
   id: number;
   value: string;
-  session_id: number;
-  type: string;
 }
